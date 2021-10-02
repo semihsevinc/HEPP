@@ -4,6 +4,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import QImage
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 import cv2
 import sys
@@ -16,22 +17,22 @@ class HEPP(QtWidgets.QMainWindow):
     def __init__(self):
         QtWidgets.QMainWindow.__init__(self)
         self.ui = uic.loadUi("main.ui", self)
-        self.ui.label_general.setStyleSheet("background-image : url(label_general.png)")
-        self.ui.label_headpond.setStyleSheet("background-image : url(label_headpond.png)")
-        self.ui.label_generator.setStyleSheet("background-image : url(label_generator.png)")
-        self.ui.label_other.setStyleSheet("background-image : url(label_other.png)")
+        self.setWindowIcon(QIcon("Icons/sauicon.jpg"))
+        self.ui.label_general.setStyleSheet("background-image : url(Icons/label_general.png)")
+        self.ui.label_headpond.setStyleSheet("background-image : url(Icons/label_headpond.png)")
+        self.ui.label_generator.setStyleSheet("background-image : url(Icons/label_generator.png)")
+        self.ui.label_other.setStyleSheet("background-image : url(Icons/label_other.png)")
         self.ui.pushButton_general.clicked.connect(self.open_general)
         self.ui.pushButton_generator.clicked.connect(self.open_generator)
         self.ui.pushButton_headpond.clicked.connect(self.open_headpond)
         self.ui.pushButton_other.clicked.connect(self.open_other)
-
         self.ui.pushButton_trends.clicked.connect(self.open_trends)
 
         self.ui.scrollArea_trends = QScrollArea()
         self.ui.scrollArea_trends.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
         self.ui.scrollArea_trends.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
         self.ui.scrollArea_trends.setWidgetResizable(True)
-        # comboBox_scheme
+
     def open_general(self):
         self.window_ext = QtWidgets.QMainWindow()
         self.ui1 =ui_mainWindow_ext()
@@ -57,6 +58,7 @@ class HEPP(QtWidgets.QMainWindow):
         filename = QFileDialog.getOpenFileName(self, 'Open a file', 'Trends/',
                                                'All Image Files (*.png;*.jpg;*.jpeg;*.jpe;*.jfif)')
         self.image = cv2.imread(str(filename[0]))
+        print(filename[0])
         if self.image is None:
             return QMainWindow
         frame = cv2.cvtColor(self.image, cv2.COLOR_BGR2RGB)
@@ -69,9 +71,9 @@ class Window(QMainWindow):
         super().__init__()
         import time
         splash = QSplashScreen()
-        splash.setPixmap(QPixmap('icon.ico'))
+        splash.setPixmap(QPixmap('Icons/icon.png'))
         splash.show()
-        time.sleep(5)
+        time.sleep(1)
 
 app = QtWidgets.QApplication(sys.argv)
 mainWindow = HEPP()

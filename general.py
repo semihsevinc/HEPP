@@ -47,7 +47,7 @@ class Ui_MainWindow1(object):
         self.label_general.setObjectName("label_general")
         self.gridLayout.addWidget(self.label_general, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
-        self.label_general.setStyleSheet("background-image : url(label_generator.png)")
+        self.label_general.setStyleSheet("background-image : url(label_generator1.png)")
         self.retranslate_ui2(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
