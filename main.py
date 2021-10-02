@@ -73,7 +73,7 @@ class Window(QMainWindow):
         splash = QSplashScreen()
         splash.setPixmap(QPixmap('Icons/icon.png'))
         splash.show()
-        time.sleep(1)
+        time.sleep(5)
 
 app = QtWidgets.QApplication(sys.argv)
 mainWindow = HEPP()
